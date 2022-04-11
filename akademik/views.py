@@ -1,17 +1,20 @@
+from multiprocessing import context
 from django.shortcuts import render,HttpResponse
 
 # Create your views here.
-def dashboard_akademik(request):
-    return HttpResponse('<h2>Halaman Dashboard</h2>')
+def manage_mahasiswa(request):
+    template_name='mahasiswa/index.html'
+    title = 'List Mahasiswa'
 
-def add_akademik(request):
-    data_akademik = 'akademik'
-    nama_mhs = 'Rifki'
-
-    context = {
-        'data_akademik':data_akademik,
-        'nama_mhs':nama_mhs,
-
+    context={
+        'title':title,
     }
+    return render(request,template_name,context)
 
-    return render(request,'index.html',context)
+def add_mahasiswa(request):
+    template_name='mahasiswa/add_mahasiswa.html'
+    title = 'Form Tambah Data Mahasiswa'
+    context={
+        'title':title,
+    }
+    return render(request,template_name,context)
